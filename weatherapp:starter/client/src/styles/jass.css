@@ -71,9 +71,6 @@ article h1 {
   color: #2d3e50; /* A dark blue for better contrast */
 }
 
-/**
- * Responsive adjustments for smaller screens
- */
 @media screen and (max-width: 768px) {
   section h1,
   article h1 {
@@ -168,20 +165,12 @@ a {
   transition: color 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-/**
- * 1. Improve hover state visibility.
- * 2. Ensure accessibility by using a contrasting color.
- */
 a:hover,
 a:focus {
   color: #0056a3; /* Darker shade on hover */
   text-decoration: underline; /* Adds an underline for clarity */
 }
 
-/**
- * 1. Enhance active link visibility.
- * 2. Improve focus accessibility for keyboard navigation.
- */
 a:active {
   color: #004080; /* Even darker shade when active */
   background-color: transparent; /* Ensures no gray background in IE 10 */
@@ -194,10 +183,6 @@ abbr[title] {
   cursor: help; /* Indicates additional information is available */
 }
 
-/**
- * 1. Improve visibility when hovered.
- * 2. Enhance user interaction by making abbreviations more noticeable.
- */
 abbr[title]:hover {
   text-decoration: underline solid #333; /* Turns into a solid underline on hover */
   color: #222; /* Slightly darkens the text color for better contrast */
@@ -209,10 +194,6 @@ strong {
   color: inherit; /* Ensures it respects parent text color */
 }
 
-/**
- * 1. Improve accessibility by slightly increasing contrast for high visibility.
- * 2. Maintain visual hierarchy without disrupting design consistency.
- */
 b:focus,
 strong:focus {
   outline: none; /* Removes default focus outlines */
@@ -230,19 +211,12 @@ samp {
   color: #333; /* Ensures proper text contrast */
 }
 
-/**
- * 1. Improve focus visibility for accessibility.
- * 2. Distinguish `kbd` inputs with a slightly bolder appearance.
- */
 kbd {
   font-weight: 600;
   background-color: #ddd; /* Slightly darker background for keyboard inputs */
   border: 1px solid #ccc;
 }
 
-/**
- * 1. Add a subtle hover effect for better UI experience.
- */
 code:hover,
 kbd:hover,
 samp:hover {
@@ -255,16 +229,10 @@ small {
   color: #555; /* Slightly lighter than body text for differentiation */
 }
 
-/**
- * 1. Ensures better visibility on dark backgrounds.
- */
 .dark-mode small {
   color: #ddd; /* Lighter text for better contrast */
 }
 
-/**
- * 1. Adjusts font weight for emphasis in headers.
- */
 h1 small,
 h2 small,
 h3 small {
@@ -280,24 +248,14 @@ sup {
   vertical-align: baseline;
 }
 
-/**
- * 1. Adjusts `sub` positioning to prevent overlap with surrounding text.
- */
 sub {
   bottom: -0.25em; /* Moves subscript slightly lower */
 }
 
-/**
- * 1. Adjusts `sup` positioning to align properly with text.
- */
 sup {
   top: -0.5em; /* Moves superscript slightly higher */
 }
 
-/**
- * 1. Improves readability in headers where sub/sup might be used.
- * 2. Ensures better spacing in larger fonts.
- */
 h1 sub,
 h1 sup,
 h2 sub,
@@ -305,59 +263,58 @@ h2 sup {
   font-size: 65%; /* Slightly smaller for large headings */
 }
 
-/* Embedded content
-     ========================================================================== */
-/**
-   * Remove the border on images inside links in IE 10.
-   */
 img {
-  border-style: none;
+  border-style: none; /* Removes default border */
+  display: block; /* Ensures images behave predictably in layouts */
+  max-width: 100%; /* Ensures images are responsive */
+  height: auto; /* Maintains aspect ratio */
 }
 
-/* Forms
-     ========================================================================== */
-/**
-   * 1. Change the font styles in all browsers.
-   * 2. Remove the margin in Firefox and Safari.
-   */
 button,
 input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */
+  font-family: inherit; /* Ensures consistency with surrounding text */
+  font-size: 100%; /* Prevents unexpected scaling */
+  line-height: 1.15; /* Improves readability */
+  margin: 0; /* Prevents unexpected margins in Safari/Firefox */
+  padding: 0.5rem; /* Adds comfortable spacing for usability */
+  border: 1px solid #ccc; /* Defines a subtle default border */
+  border-radius: 4px; /* Slight rounding for modern UI */
+  background-color: #fff; /* Ensures inputs have a clean background */
+  color: #1a1a1a; /* Uses standard text color */
+  outline: none; /* Prevents default browser outlines */
 }
 
-/**
-   * Show the overflow in IE.
-   * 1. Show the overflow in Edge.
-   */
-button,
-input {
-  /* 1 */
-  overflow: visible;
-}
+ button:focus,
+ input:focus,
+ select:focus,
+ textarea:focus {
+   border-color: #1b89bc; /* Highlight active elements with a primary color */
+   box-shadow: 0 0 5px rgba(27, 137, 188, 0.5); /* Adds a glow effect */
+   outline: none; /* Prevents default browser outline */
+ }
+ 
+ button:hover,
+ [type="button"]:hover,
+ [type="submit"]:hover {
+   background-color: #e0e0e0; /* Lightens button on hover */
+   cursor: pointer; /* Ensures buttons have pointer cursor */
+ }
+ 
+ button:disabled,
+ [type="submit"]:disabled {
+   background-color: #cccccc;
+   cursor: not-allowed;
+   opacity: 0.6;
+ }
 
-/**
-   * Remove the inheritance of text transform in Edge, Firefox, and IE.
-   * 1. Remove the inheritance of text transform in Firefox.
-   */
 button,
 select {
-  /* 1 */
   text-transform: none;
 }
 
-/**
-   * Correct the inability to style clickable types in iOS and Safari.
-   */
 button,
 [type='button'],
 [type='reset'],
@@ -366,9 +323,13 @@ button,
   appearance: button;
 }
 
-/**
-   * Remove the inner border and padding in Firefox.
-   */
+@supports (-webkit-appearance: none) {
+  button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
@@ -376,10 +337,6 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
-/**
-   * Restore the focus styles unset by the previous rule.
-   */
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
@@ -387,97 +344,54 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
-/**
-   * Correct the padding in Firefox.
-   */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
+  border: 1px solid #ccc; /* add a subtle border */
 }
 
-/**
-   * 1. Correct the text wrapping in Edge and IE.
-   * 2. Correct the color inheritance from `fieldset` elements in IE.
-   * 3. Remove the padding so developers are not caught out when they zero out
-   *    `fieldset` elements in all browsers.
-   */
 legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  box-sizing: border-box; /* Ensure consistent sizing in Edge and IE */
+  color: inherit; /* Ensure text color inherits properly in IE */
+  display: table; /* Fix text wrapping issues in Edge and IE */
+  max-width: 100%; /* Prevent overflow issues */
+  padding: 0; /* Remove padding to allow full control over spacing */
+  white-space: normal; /* Ensure proper text wrapping */
 }
 
-/**
-   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
-   */
 progress {
   vertical-align: baseline;
 }
 
-/**
-   * Remove the default vertical scrollbar in IE 10+.
-   */
 textarea {
   overflow: auto;
 }
 
-/**
-   * 1. Add the correct box sizing in IE 10.
-   * 2. Remove the padding in IE 10.
-   */
 [type='checkbox'],
 [type='radio'] {
   box-sizing: border-box;
-  /* 1 */
   padding: 0;
-  /* 2 */
 }
 
-/**
-   * Correct the cursor style of increment and decrement buttons in Chrome.
-   */
 [type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-  height: auto;
+[type='number']::-webkit-outer-spin-button {  
+  height: auto; /* Ensures proper cursor behavior when adjusting numbers */
 }
-
-/**
-   * 1. Correct the odd appearance in Chrome and Safari.
-   * 2. Correct the outline style in Safari.
-   */
+   
 [type='search'] {
-  -webkit-appearance: textfield;
+  -webkit-appearance: textfield; /* Fixes inconsistent rendering in Chrome and Safari */
   appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  outline-offset: -2px; /* Ensures correct focus outline positioning in Safari */
 }
 
-/**
-   * Remove the inner padding in Chrome and Safari on macOS.
-   */
 [type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* Removes default search decoration */
 }
 
-/**
-   * 1. Correct the inability to style clickable types in iOS and Safari.
-   * 2. Change font properties to `inherit` in Safari.
-   */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* Ensures button styling is respected */
+  font: inherit; /* Makes it match surrounding text in Safari */
 }
+
 
 /* Interactive
      ========================================================================== */
