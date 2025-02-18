@@ -58,13 +58,12 @@ const fetchWeather = async (cityName: string) => {
 };
 
 
-
 const renderCurrentWeather = (currentWeather: any): void => {
   if (!heading || !weatherIcon || !tempEl || !windEl || !humidityEl) return;
 
   const { city, temperature, description, humidity, windSpeed, icon } = currentWeather;
 
-  heading.textContent = `${city || 'Unknown Location'} (N/A)`;
+  heading.textContent = `${city || 'Unknown Location'}`;
   weatherIcon.setAttribute('src', `https://openweathermap.org/img/w/${icon || '01d'}.png`);
   weatherIcon.setAttribute('alt', description);
   weatherIcon.setAttribute('class', 'weather-img');
@@ -112,9 +111,6 @@ const renderForecastCard = (forecast: any) => {
     forecastContainer.append(col);
   }
 };
-
-
-
 
 // ✅ Create Forecast Card
 const createForecastCard = () => {

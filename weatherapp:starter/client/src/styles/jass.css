@@ -1,5 +1,5 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
- html {
+html {
   line-height: 1.5;
   -webkit-text-size-adjust: none;
 }
@@ -392,37 +392,113 @@ textarea {
   font: inherit; /* Makes it match surrounding text in Safari */
 }
 
-
-/* Interactive
-     ========================================================================== */
-/*
-   * Add the correct display in Edge, IE 10+, and Firefox.
-   */
 details {
   display: block;
 }
 
-/*
-   * Add the correct display in all browsers.
-   */
 summary {
   display: list-item;
 }
 
-/* Misc
-     ========================================================================== */
-/**
-   * Add the correct display in IE 10+.
-   */
 template {
   display: none;
 }
 
-/**
-   * Add the correct display in IE 10.
-   */
 [hidden] {
   display: none;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center; /* Center it horizontally */
+  align-items: center; /* Center it vertically */
+  margin: 1rem auto; /* Adjust the margin to keep it balanced */
+  max-width: 80%; /* Prevent it from stretching too wide */
+}
+
+.history-btn {
+  background-color: #1b89bc; /* Primary color for buttons */
+  color: #ffffff; /* White text for better contrast */
+  padding: 0.5rem 1rem; /* Adds comfortable spacing */
+  border-radius: 4px; /* Softens the edges */
+  border: none; /* Removes default border */
+  cursor: pointer; /* Changes the cursor on hover */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+
+button.history-btn.btn.btn-secondary.col-10 {
+  background-color: #2d3e50;
+  color: #d9e9e8;
+  padding: 0.5rem 1rem;
+  margin: 3px;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #1a1a1a;
+  background-color: #aeaeae;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #2d3e50;
+  color: #d9e9e8;
+}
+
+.col-10 {
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%;
+}
+
+body {
+  margin: 5px;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(37,70,140,1) 94%);
+}
+
+div#today.card-body {
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
+  color: #d9e9e8;
+  border-radius: 0.3rem;
+}
+
+aside.col-lg-3.pb-3 {
+  padding-bottom: 1rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);  
+  color: #d9e9e8;
+}
+
+header.container-fluid.text-center.text-white.bg-dark.p-1.weather-header {
+  padding: 0.5rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
+  color: #d9e9e8;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+div.card-body.p-2, div.forecast-card.card.text-white.bg-primary.h-100 {
+  padding: 0.5rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
 }
 
 /*
