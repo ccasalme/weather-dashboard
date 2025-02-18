@@ -6,16 +6,14 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "npm run build && node dist/server.js --ignore client",
-    "dev": "npx nodemon",
+    "start": "npm run build && node dist/server.js",
+    "dev": "npx nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
+    "watch": ["src"],
     "ext": "ts,json,js",
-    "exec": "npx tsc || exit 0 && node dist/server.js"
+    "exec": "npx tsc && node dist/server.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,190 +1,320 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
- html {
-  line-height: 1.15;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
 }
 
-/* Sections
-     ========================================================================== */
-/**
-   * Remove the margin in all browsers.
-   */
+section {
+  padding: 2rem 1rem; /* Adds breathing room inside sections */
+  margin-bottom: 2rem; /* Ensures spacing between sections */
+  width: 100%; /* Ensures full width */
+  max-width: 1200px; /* Prevents excessive stretching on large screens */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-light {
+  background-color: #f9f9f9; /* Light gray for contrast */
+  border-radius: 8px; /* Adds smooth, rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.section-dark {
+  background-color: #2d3e50; /* Darker background for emphasis */
+  color: white; /* Ensures text readability */
+  border-radius: 8px;
+  padding: 2.5rem 1.5rem; /* Slightly more padding for emphasis */
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
 body {
   margin: 0;
+  padding: 0; /* Ensures no padding is applied by default */
+  width: 100%; /* Prevents unexpected horizontal scrolling */
+  overflow-x: hidden; /* Prevents horizontal scrolling issues */
+}
+
+ main {
+  display: block; /* Ensures `main` behaves as a block-level element */
+  width: 100%;
+  max-width: 1200px; /* Prevents excessive stretching on large screens */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem; /* Adds spacing around content */
+  background-color: #ffffff; /* Keeps a clean, readable background */
+  border-radius: 8px; /* Smooth corners for a polished look */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Adds slight depth */
 }
 
 /**
-   * Render the `main` element consistently in IE.
-   */
-main {
-  display: block;
+ * Optional styles for a dark mode theme on `main`
+ */
+main.dark-theme {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-/**
-   * Correct the font size and margin on `h1` elements within `section` and
-   * `article` contexts in Chrome, Firefox, and Safari.
-   */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+section h1,
+article h1 {
+  font-size: 2.25rem; /* Slightly larger for emphasis */
+  margin: 1rem 0; /* Provides better spacing in structured content */
+  font-weight: bold; /* Ensures prominence as a heading */
+  line-height: 1.3; /* Improves readability */
+  text-align: left; /* Keeps alignment clean */
+  color: #2d3e50; /* A dark blue for better contrast */
 }
 
-/* Grouping content
-     ========================================================================== */
-/**
-   * 1. Add the correct box sizing in Firefox.
-   * 2. Show the overflow in Edge and IE.
-   */
+@media screen and (max-width: 768px) {
+  section h1,
+  article h1 {
+    font-size: 2rem; /* Slightly reduce size on smaller screens */
+    text-align: center; /* Centers headings for mobile readability */
+  }
+}
+
+/* Horizontal rules - improving spacing and visibility */
 hr {
   box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
+  height: 1px;
+  border: none;
+  background-color: #ccc; /* Subtle color for separators */
+  margin: 1rem 0; /* Adds space around horizontal lines */
 }
 
-/**
-   * 1. Correct the inheritance and scaling of font size in all browsers.
-   * 2. Correct the odd `em` font sizing in all browsers.
-   */
+/* Preformatted text blocks */
 pre {
   font-family: monospace, monospace;
-  /* 1 */
   font-size: 1em;
-  /* 2 */
+  background-color: #f4f4f4; /* Light gray background */
+  padding: 0.75rem;
+  border-radius: 4px; /* Soft corners */
+  overflow-x: auto; /* Allows scrolling for long content */
+  line-height: 1.5;
 }
 
-/* Text-level semantics
-     ========================================================================== */
-/**
-   * Remove the gray background on active links in IE 10.
-   */
+/* Blockquotes - stylized with better readability */
+blockquote {
+  font-style: italic;
+  border-left: 4px solid #1b89bc; /* Accent color */
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0;
+  background-color: #f9f9f9; /* Light gray background */
+}
+
+/* Lists - improving spacing and readability */
+ul,
+ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+/* Definition lists */
+dl {
+  margin: 0 0 1rem;
+}
+
+dt {
+  font-weight: bold;
+  color: #2d3e50;
+}
+
+dd {
+  margin-left: 1.5rem;
+  font-style: italic;
+}
+
+hr {
+  box-sizing: border-box; /* Ensures consistent width handling */
+  height: 1px; /* Makes sure the HR is visible */
+  overflow: visible; /* Allows Edge/IE to display properly */
+  border: none; /* Removes default border */
+  background-color: #ccc; /* Subtle gray for visual separation */
+  margin: 1rem 0; /* Adds spacing before and after */
+}
+
+pre {
+  font-family: monospace, monospace; /* Ensures consistent monospace rendering */
+  font-size: 1em; /* Fixes font scaling inconsistencies */
+  line-height: 1.5; /* Improves readability */
+  background-color: #f4f4f4; /* Light background for contrast */
+  padding: 0.75rem; /* Adds spacing inside */
+  border-radius: 4px; /* Softens the edges */
+  overflow-x: auto; /* Enables horizontal scrolling for long code blocks */
+  white-space: pre-wrap; /* Ensures text wraps correctly */
+}
+
 a {
-  background-color: transparent;
+  background-color: transparent; /* Removes gray background */
+  color: #0077cc; /* Default link color */
+  text-decoration: none; /* Removes default underline */
+  transition: color 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-/**
-   * 1. Remove the bottom border in Chrome 57-
-   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-   */
+a:hover,
+a:focus {
+  color: #0056a3; /* Darker shade on hover */
+  text-decoration: underline; /* Adds an underline for clarity */
+}
+
+a:active {
+  color: #004080; /* Even darker shade when active */
+  background-color: transparent; /* Ensures no gray background in IE 10 */
+  outline: none; /* Removes unwanted focus outline */
+}
+
 abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  /* 2 */
-  text-decoration: underline dotted;
-  /* 2 */
+  border-bottom: none; /* Removes default browser border */
+  text-decoration: underline dotted #555; /* Ensures a visible, subtle dotted underline */
+  cursor: help; /* Indicates additional information is available */
 }
 
-/**
-   * Add the correct font weight in Chrome, Edge, and Safari.
-   */
+abbr[title]:hover {
+  text-decoration: underline solid #333; /* Turns into a solid underline on hover */
+  color: #222; /* Slightly darkens the text color for better contrast */
+}
+
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 700; /* Explicitly set to bold for better clarity */
+  color: inherit; /* Ensures it respects parent text color */
 }
 
-/**
-   * 1. Correct the inheritance and scaling of font size in all browsers.
-   * 2. Correct the odd `em` font sizing in all browsers.
-   */
+b:focus,
+strong:focus {
+  outline: none; /* Removes default focus outlines */
+  text-decoration: underline; /* Enhances readability for focused elements */
+}
+
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: 'Courier New', Courier, monospace; /* Ensures cross-browser compatibility */
+  font-size: 1em; /* Prevents font scaling inconsistencies */
+  background-color: #f4f4f4; /* Light gray background for better visibility */
+  padding: 0.2rem 0.4rem; /* Adds slight padding for readability */
+  border-radius: 4px; /* Smoothens edges for modern UI */
+  color: #333; /* Ensures proper text contrast */
 }
 
-/**
-   * Add the correct font size in all browsers.
-   */
+kbd {
+  font-weight: 600;
+  background-color: #ddd; /* Slightly darker background for keyboard inputs */
+  border: 1px solid #ccc;
+}
+
+code:hover,
+kbd:hover,
+samp:hover {
+  background-color: #e8e8e8;
+}
+
 small {
-  font-size: 80%;
+  font-size: 80%; /* Maintains consistent scaling across browsers */
+  line-height: 1.2; /* Ensures better readability */
+  color: #555; /* Slightly lighter than body text for differentiation */
 }
 
-/**
-   * Prevent `sub` and `sup` elements from affecting the line height in
-   * all browsers.
-   */
+.dark-mode small {
+  color: #ddd; /* Lighter text for better contrast */
+}
+
+h1 small,
+h2 small,
+h3 small {
+  font-size: 75%; /* Slightly smaller within headers */
+  font-weight: 600; /* Makes small text in headers more readable */
+}
+
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
+  font-size: 75%; /* Keeps subscript and superscript readable */
+  line-height: 0; /* Prevents affecting line height */
   position: relative;
   vertical-align: baseline;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -0.25em; /* Moves subscript slightly lower */
 }
 
 sup {
-  top: -0.5em;
+  top: -0.5em; /* Moves superscript slightly higher */
 }
 
-/* Embedded content
-     ========================================================================== */
-/**
-   * Remove the border on images inside links in IE 10.
-   */
+h1 sub,
+h1 sup,
+h2 sub,
+h2 sup {
+  font-size: 65%; /* Slightly smaller for large headings */
+}
+
 img {
-  border-style: none;
+  border-style: none; /* Removes default border */
+  display: block; /* Ensures images behave predictably in layouts */
+  max-width: 100%; /* Ensures images are responsive */
+  height: auto; /* Maintains aspect ratio */
 }
 
-/* Forms
-     ========================================================================== */
-/**
-   * 1. Change the font styles in all browsers.
-   * 2. Remove the margin in Firefox and Safari.
-   */
 button,
 input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */
+  font-family: inherit; /* Ensures consistency with surrounding text */
+  font-size: 100%; /* Prevents unexpected scaling */
+  line-height: 1.15; /* Improves readability */
+  margin: 0; /* Prevents unexpected margins in Safari/Firefox */
+  padding: 0.5rem; /* Adds comfortable spacing for usability */
+  border: 1px solid #ccc; /* Defines a subtle default border */
+  border-radius: 4px; /* Slight rounding for modern UI */
+  background-color: #fff; /* Ensures inputs have a clean background */
+  color: #1a1a1a; /* Uses standard text color */
+  outline: none; /* Prevents default browser outlines */
 }
 
-/**
-   * Show the overflow in IE.
-   * 1. Show the overflow in Edge.
-   */
-button,
-input {
-  /* 1 */
-  overflow: visible;
-}
+ button:focus,
+ input:focus,
+ select:focus,
+ textarea:focus {
+   border-color: #1b89bc; /* Highlight active elements with a primary color */
+   box-shadow: 0 0 5px rgba(27, 137, 188, 0.5); /* Adds a glow effect */
+   outline: none; /* Prevents default browser outline */
+ }
+ 
+ button:hover,
+ [type="button"]:hover,
+ [type="submit"]:hover {
+   background-color: #e0e0e0; /* Lightens button on hover */
+   cursor: pointer; /* Ensures buttons have pointer cursor */
+ }
+ 
+ button:disabled,
+ [type="submit"]:disabled {
+   background-color: #cccccc;
+   cursor: not-allowed;
+   opacity: 0.6;
+ }
 
-/**
-   * Remove the inheritance of text transform in Edge, Firefox, and IE.
-   * 1. Remove the inheritance of text transform in Firefox.
-   */
 button,
 select {
-  /* 1 */
   text-transform: none;
 }
 
-/**
-   * Correct the inability to style clickable types in iOS and Safari.
-   */
 button,
 [type='button'],
 [type='reset'],
@@ -193,9 +323,13 @@ button,
   appearance: button;
 }
 
-/**
-   * Remove the inner border and padding in Firefox.
-   */
+@supports (-webkit-appearance: none) {
+  button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
@@ -203,10 +337,6 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
-/**
-   * Restore the focus styles unset by the previous rule.
-   */
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
@@ -214,128 +344,161 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
-/**
-   * Correct the padding in Firefox.
-   */
 fieldset {
   padding: 0.35em 0.75em 0.625em;
+  border: 1px solid #ccc; /* add a subtle border */
 }
 
-/**
-   * 1. Correct the text wrapping in Edge and IE.
-   * 2. Correct the color inheritance from `fieldset` elements in IE.
-   * 3. Remove the padding so developers are not caught out when they zero out
-   *    `fieldset` elements in all browsers.
-   */
 legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  box-sizing: border-box; /* Ensure consistent sizing in Edge and IE */
+  color: inherit; /* Ensure text color inherits properly in IE */
+  display: table; /* Fix text wrapping issues in Edge and IE */
+  max-width: 100%; /* Prevent overflow issues */
+  padding: 0; /* Remove padding to allow full control over spacing */
+  white-space: normal; /* Ensure proper text wrapping */
 }
 
-/**
-   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
-   */
 progress {
   vertical-align: baseline;
 }
 
-/**
-   * Remove the default vertical scrollbar in IE 10+.
-   */
 textarea {
   overflow: auto;
 }
 
-/**
-   * 1. Add the correct box sizing in IE 10.
-   * 2. Remove the padding in IE 10.
-   */
 [type='checkbox'],
 [type='radio'] {
   box-sizing: border-box;
-  /* 1 */
   padding: 0;
-  /* 2 */
 }
 
-/**
-   * Correct the cursor style of increment and decrement buttons in Chrome.
-   */
 [type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-  height: auto;
+[type='number']::-webkit-outer-spin-button {  
+  height: auto; /* Ensures proper cursor behavior when adjusting numbers */
 }
-
-/**
-   * 1. Correct the odd appearance in Chrome and Safari.
-   * 2. Correct the outline style in Safari.
-   */
+   
 [type='search'] {
-  -webkit-appearance: textfield;
+  -webkit-appearance: textfield; /* Fixes inconsistent rendering in Chrome and Safari */
   appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  outline-offset: -2px; /* Ensures correct focus outline positioning in Safari */
 }
 
-/**
-   * Remove the inner padding in Chrome and Safari on macOS.
-   */
 [type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* Removes default search decoration */
 }
 
-/**
-   * 1. Correct the inability to style clickable types in iOS and Safari.
-   * 2. Change font properties to `inherit` in Safari.
-   */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* Ensures button styling is respected */
+  font: inherit; /* Makes it match surrounding text in Safari */
 }
 
-/* Interactive
-     ========================================================================== */
-/*
-   * Add the correct display in Edge, IE 10+, and Firefox.
-   */
 details {
   display: block;
 }
 
-/*
-   * Add the correct display in all browsers.
-   */
 summary {
   display: list-item;
 }
 
-/* Misc
-     ========================================================================== */
-/**
-   * Add the correct display in IE 10+.
-   */
 template {
   display: none;
 }
 
-/**
-   * Add the correct display in IE 10.
-   */
 [hidden] {
   display: none;
+}
+
+.text-center {
+  display: flex;
+  justify-content: center; /* Center it horizontally */
+  align-items: center; /* Center it vertically */
+  margin: 1rem auto; /* Adjust the margin to keep it balanced */
+  max-width: 80%; /* Prevent it from stretching too wide */
+}
+
+.history-btn {
+  background-color: #1b89bc; /* Primary color for buttons */
+  color: #ffffff; /* White text for better contrast */
+  padding: 0.5rem 1rem; /* Adds comfortable spacing */
+  border-radius: 4px; /* Softens the edges */
+  border: none; /* Removes default border */
+  cursor: pointer; /* Changes the cursor on hover */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+
+button.history-btn.btn.btn-secondary.col-10 {
+  background-color: #2d3e50;
+  color: #d9e9e8;
+  padding: 0.5rem 1rem;
+  margin: 3px;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #1a1a1a;
+  background-color: #aeaeae;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #2d3e50;
+  color: #d9e9e8;
+}
+
+.col-10 {
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%;
+}
+
+body {
+  margin: 5px;
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(37,70,140,1) 94%);
+}
+
+div#today.card-body {
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
+  color: #d9e9e8;
+  border-radius: 0.3rem;
+}
+
+aside.col-lg-3.pb-3 {
+  padding-bottom: 1rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);  
+  color: #d9e9e8;
+}
+
+header.container-fluid.text-center.text-white.bg-dark.p-1.weather-header {
+  padding: 0.5rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
+  color: #d9e9e8;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+div.card-body.p-2, div.forecast-card.card.text-white.bg-primary.h-100 {
+  padding: 0.5rem;
+  background: rgb(99,96,96);
+  background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
 }
 
 /*
@@ -1916,3 +2079,5 @@ label form [type='radio'] {
   background: -moz-linear-gradient(right, #20084a, #3463bc);
   background: linear-gradient(to left, #20084a, #3463bc);
 }
+
+

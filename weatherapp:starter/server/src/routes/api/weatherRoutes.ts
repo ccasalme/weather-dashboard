@@ -1,19 +1,58 @@
 import { Router } from 'express';
+import HistoryService from '../../service/historyService.js';
+import WeatherService from '../../service/weatherService.js';
+
 const router = Router();
 
-// import HistoryService from '../../service/historyService.js';
-// import WeatherService from '../../service/weatherService.js';
+// ✅ POST: Get weather data & save city to history
+router.post('/', async (req, res) => {
+  try {
+    console.log('🌍 Request body:', req.body);
+    const { city } = req.body;
+    if (!city) {
+      return res.status(400).json({ error: 'City name is required' });
+    }
 
-// TODO: POST Request with city name to retrieve weather data
-router.post('/', (req, res) => {
-  // TODO: GET weather data from city name
-  // TODO: save city to search history
+    // Fetch weather data (now includes both current & forecast)
+    const weatherData = await WeatherService.getWeatherForCity(city);
+    console.log('✅ Weather Data:', weatherData);
+
+    // Save city to search history
+    await HistoryService.addCity(city);
+
+    return res.json(weatherData);
+  } catch (error: unknown) {  
+    console.error('❌ Error fetching weather data:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
+  }
 });
 
-// TODO: GET search history
-router.get('/history', async (req, res) => {});
+// ✅ GET: Retrieve search history
+router.get('/history', async (_req, res) => {
+  try {
+    const history = await HistoryService.getCities();
+    console.log('📜 Search History:', history);
+    return res.json(history);
+  } catch (error: unknown) {  
+    console.error('❌ Error retrieving search history:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
+  }
+});
 
-// * BONUS TODO: DELETE city from search history
-router.delete('/history/:id', async (req, res) => {});
+// ✅ DELETE: Remove city from search history
+router.delete('/history/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(`🗑️ Deleting city from history: ${id}`);
+    await HistoryService.removeCity(id);
+    return res.json({ message: '✅ City deleted from history' });
+  } catch (error: unknown) {  
+    console.error('❌ Error deleting city:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
+  }
+});
 
 export default router;
