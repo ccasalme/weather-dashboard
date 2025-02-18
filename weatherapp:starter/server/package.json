@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "build": "npx tsc",
@@ -11,9 +11,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "nodemonConfig": {
-    "watch": ["src"],
+    "watch": [
+      "src"
+    ],
     "ext": "ts,json,js",
-    "exec": "npx tsc && node dist/server.js"
+    "exec": "npx tsc || exit 0 && node dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +30,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
     "@types/uuid": "^9.0.8",
-    "nodemon": "^3.1.0",
+    "nodemon": "^3.1.9",
     "typescript": "^5.4.5"
   }
 }
