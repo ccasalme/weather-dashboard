@@ -203,32 +203,73 @@ abbr[title]:hover {
   color: #222; /* Slightly darkens the text color for better contrast */
 }
 
-/**
-   * Add the correct font weight in Chrome, Edge, and Safari.
-   */
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 700; /* Explicitly set to bold for better clarity */
+  color: inherit; /* Ensures it respects parent text color */
 }
 
 /**
-   * 1. Correct the inheritance and scaling of font size in all browsers.
-   * 2. Correct the odd `em` font sizing in all browsers.
-   */
+ * 1. Improve accessibility by slightly increasing contrast for high visibility.
+ * 2. Maintain visual hierarchy without disrupting design consistency.
+ */
+b:focus,
+strong:focus {
+  outline: none; /* Removes default focus outlines */
+  text-decoration: underline; /* Enhances readability for focused elements */
+}
+
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: 'Courier New', Courier, monospace; /* Ensures cross-browser compatibility */
+  font-size: 1em; /* Prevents font scaling inconsistencies */
+  background-color: #f4f4f4; /* Light gray background for better visibility */
+  padding: 0.2rem 0.4rem; /* Adds slight padding for readability */
+  border-radius: 4px; /* Smoothens edges for modern UI */
+  color: #333; /* Ensures proper text contrast */
 }
 
 /**
-   * Add the correct font size in all browsers.
-   */
+ * 1. Improve focus visibility for accessibility.
+ * 2. Distinguish `kbd` inputs with a slightly bolder appearance.
+ */
+kbd {
+  font-weight: 600;
+  background-color: #ddd; /* Slightly darker background for keyboard inputs */
+  border: 1px solid #ccc;
+}
+
+/**
+ * 1. Add a subtle hover effect for better UI experience.
+ */
+code:hover,
+kbd:hover,
+samp:hover {
+  background-color: #e8e8e8;
+}
+
 small {
-  font-size: 80%;
+  font-size: 80%; /* Maintains consistent scaling across browsers */
+  line-height: 1.2; /* Ensures better readability */
+  color: #555; /* Slightly lighter than body text for differentiation */
+}
+
+/**
+ * 1. Ensures better visibility on dark backgrounds.
+ */
+.dark-mode small {
+  color: #ddd; /* Lighter text for better contrast */
+}
+
+/**
+ * 1. Adjusts font weight for emphasis in headers.
+ */
+h1 small,
+h2 small,
+h3 small {
+  font-size: 75%; /* Slightly smaller within headers */
+  font-weight: 600; /* Makes small text in headers more readable */
 }
 
 /**
