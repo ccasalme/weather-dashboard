@@ -79,8 +79,6 @@ const renderCurrentWeather = (currentWeather: any): void => {
   }
 };
 
-
-
 // ✅ Render Forecast
 const renderForecast = (forecast: any[]) => {
   if (!forecastContainer) return;
