@@ -1,17 +1,49 @@
-// TODO: Define a City class with name and id properties
+import fs from 'fs/promises';
+import path from 'path';
 
-// TODO: Complete the HistoryService class
+// Define a City class
+class City {
+  constructor(public id: string, public name: string) {}
+}
+
+// Define the file path for storing history
+const filePath = path.join(__dirname, '../../data/searchHistory.json');
+
 class HistoryService {
-  // TODO: Define a read method that reads from the searchHistory.json file
-  // private async read() {}
-  // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
-  // private async write(cities: City[]) {}
-  // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
-  // async getCities() {}
-  // TODO Define an addCity method that adds a city to the searchHistory.json file
-  // async addCity(city: string) {}
-  // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
-  // async removeCity(id: string) {}
+  // Read from the JSON file
+  private async read(): Promise<City[]> {
+    try {
+      const data = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(data) as City[];
+    } catch (error) {
+      return []; // Return an empty array if file doesn't exist or is empty
+    }
+  }
+
+  // Write to the JSON file
+  private async write(cities: City[]): Promise<void> {
+    await fs.writeFile(filePath, JSON.stringify(cities, null, 2), 'utf-8');
+  }
+
+  // Get all stored cities
+  async getCities(): Promise<City[]> {
+    return this.read();
+  }
+
+  // Add a new city to history
+  async addCity(cityName: string): Promise<void> {
+    const cities = await this.read();
+    const newCity = new City(Date.now().toString(), cityName);
+    cities.push(newCity);
+    await this.write(cities);
+  }
+
+  // Remove a city by ID
+  async removeCity(id: string): Promise<void> {
+    let cities = await this.read();
+    cities = cities.filter(city => city.id !== id);
+    await this.write(cities);
+  }
 }
 
 export default new HistoryService();
