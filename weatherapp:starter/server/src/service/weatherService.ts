@@ -17,14 +17,15 @@ interface Weather {
 }
 
 class WeatherService {
-  private baseURL = 'https://api.openweathermap.org/data/2.5';
+  private baseGeoURL = 'http://api.openweathermap.org/geo/1.0';
+  private baseWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
   private apiKey = process.env.WEATHER_API_KEY || '';
 
   // Fetch location data
   private async fetchLocationData(city: string): Promise<Coordinates> {
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`
+        `${this.baseGeoURL}/direct?q=${city}&limit=1&appid=${this.apiKey}`
       );
 
       if (!response.data.length) throw new Error('Location not found');
@@ -41,7 +42,7 @@ class WeatherService {
   private async fetchWeatherData(coordinates: Coordinates): Promise<Weather> {
     try {
       const response = await axios.get(
-        `${this.baseURL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=metric`
+        `${this.baseWeatherURL}?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=metric`
       );
 
       const { name, main, weather, wind } = response.data;
