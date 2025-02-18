@@ -21,19 +21,29 @@ const fetchWeather = async (cityName: string) => {
       body: JSON.stringify({ city: cityName }),
     });
 
+    console.log('API Response:', response);
+
     if (!response.ok) {
       throw new Error(`Error fetching weather data: ${response.statusText}`);
     }
 
     const weatherData = await response.json();
-    console.log('Weather Data:', weatherData);
+    console.log('✅ Received Weather Data:', weatherData);
 
-    renderCurrentWeather(weatherData[0]);
-    renderForecast(weatherData.slice(1));
+    // Since the API is returning an object, no need to check for an array
+    if (!weatherData || typeof weatherData !== 'object') {
+      throw new Error('⚠️ Weather data is missing or not in expected format!');
+    }
+
+    console.log("👉 Current Weather:", weatherData);
+
+    renderCurrentWeather(weatherData); // Pass the object directly
   } catch (error) {
     console.error(error);
   }
 };
+
+
 
 const fetchSearchHistory = async () => {
   try {
@@ -74,11 +84,11 @@ const deleteCityFromHistory = async (id: string) => {
 const renderCurrentWeather = (currentWeather: any): void => {
   if (!heading || !weatherIcon || !tempEl || !windEl || !humidityEl) return;
 
-  const { city, date, icon, iconDescription, tempF, windSpeed, humidity } = currentWeather;
+  const { city, tempF, description, humidity, windSpeed, date } = currentWeather;
 
   heading.textContent = `${city} (${date})`;
   weatherIcon.setAttribute('src', `https://openweathermap.org/img/w/${icon}.png`);
-  weatherIcon.setAttribute('alt', iconDescription);
+  weatherIcon.setAttribute('alt', description);
   weatherIcon.setAttribute('class', 'weather-img');
 
   tempEl.textContent = `Temp: ${tempF}°F`;
@@ -225,3 +235,7 @@ searchForm?.addEventListener('submit', handleSearchFormSubmit);
 searchHistoryContainer?.addEventListener('click', handleSearchHistoryClick);
 
 getAndRenderHistory();
+
+
+
+

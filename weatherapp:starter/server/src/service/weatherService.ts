@@ -63,6 +63,7 @@ class WeatherService {
   // Get weather for a city
   async getWeatherForCity(city: string): Promise<Weather> {
     try {
+      console.log('Fetching weather for:', city);
       const coordinates = await this.fetchLocationData(city);
       return await this.fetchWeatherData(coordinates);
     } catch (error: unknown) {
