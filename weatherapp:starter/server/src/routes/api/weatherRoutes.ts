@@ -18,9 +18,10 @@ router.post('/', async (req, res) => {
     // Save city to search history
     await HistoryService.addCity(city);
 
-    res.json(weatherData);
-  } catch (error) {
-    res.status(500).json({ error: error.message || 'Error retrieving weather data' });
+    return res.json(weatherData); 
+  } catch (error: unknown) {  
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
   }
 });
 
@@ -28,9 +29,10 @@ router.post('/', async (req, res) => {
 router.get('/history', async (req, res) => {
   try {
     const history = await HistoryService.getCities();
-    res.json(history);
-  } catch (error) {
-    res.status(500).json({ error: 'Error retrieving search history' });
+    return res.json(history);
+  } catch (error: unknown) {  
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
   }
 });
 
@@ -39,9 +41,10 @@ router.delete('/history/:id', async (req, res) => {
   try {
     const { id } = req.params;
     await HistoryService.removeCity(id);
-    res.json({ message: 'City deleted from history' });
-  } catch (error) {
-    res.status(500).json({ error: 'Error deleting city' });
+    return res.json({ message: 'City deleted from history' }); 
+  } catch (error: unknown) {  
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: errorMessage });
   }
 });
 

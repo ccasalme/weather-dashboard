@@ -26,12 +26,14 @@ class WeatherService {
       const response = await axios.get(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`
       );
+
       if (!response.data.length) throw new Error('Location not found');
 
       const { lat, lon } = response.data[0];
       return { lat, lon };
-    } catch (error) {
-      throw new Error(`Failed to fetch location data: ${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to fetch location data: ${errorMessage}`);
     }
   }
 
@@ -48,10 +50,11 @@ class WeatherService {
         temperature: main.temp,
         description: weather[0].description,
         humidity: main.humidity,
-        windSpeed: wind.speed
+        windSpeed: wind.speed,
       };
-    } catch (error) {
-      throw new Error(`Failed to fetch weather data: ${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Failed to fetch weather data: ${errorMessage}`);
     }
   }
 
@@ -60,8 +63,9 @@ class WeatherService {
     try {
       const coordinates = await this.fetchLocationData(city);
       return await this.fetchWeatherData(coordinates);
-    } catch (error) {
-      throw new Error(`Error retrieving weather: ${error.message}`);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      throw new Error(`Error retrieving weather: ${errorMessage}`);
     }
   }
 }
