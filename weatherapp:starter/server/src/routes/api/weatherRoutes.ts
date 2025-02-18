@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import HistoryService from '../../service/historyService';
-import WeatherService from '../../service/weatherService';
+import HistoryService from '../../service/historyService.js';
+import WeatherService from '../../service/weatherService.js';
 
 const router = Router();
 
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 });
 
 // ✅ GET: Retrieve search history
-router.get('/history', async (req, res) => {
+router.get('/history', async (_req, res) => {
   try {
     const history = await HistoryService.getCities();
     return res.json(history);

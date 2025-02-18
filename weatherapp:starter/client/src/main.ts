@@ -1,4 +1,4 @@
-import './styles/styles.css'; 
+import './styles/jass.css'; 
 
 const searchForm = document.getElementById('search-form') as HTMLFormElement | null;
 const searchInput = document.getElementById('search-input') as HTMLInputElement | null;

@@ -1,13 +1,16 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Define a City class
+// ✅ ES Module Fix: Manually define __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const filePath = path.join(__dirname, '../../data/searchHistory.json');
+
 class City {
   constructor(public id: string, public name: string) {}
 }
-
-// Define the file path for storing history
-const filePath = path.join(__dirname, '../../data/searchHistory.json');
 
 class HistoryService {
   // Read from the JSON file
