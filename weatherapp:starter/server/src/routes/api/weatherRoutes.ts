@@ -7,22 +7,22 @@ const router = Router();
 // ✅ POST: Get weather data & save city to history
 router.post('/', async (req, res) => {
   try {
-    console.log('Request body:', req.body);
+    console.log('🌍 Request body:', req.body);
     const { city } = req.body;
     if (!city) {
       return res.status(400).json({ error: 'City name is required' });
     }
 
-    // Fetch weather data
+    // Fetch weather data (now includes both current & forecast)
     const weatherData = await WeatherService.getWeatherForCity(city);
-    console.log('Weather Data:', weatherData);
+    console.log('✅ Weather Data:', weatherData);
 
     // Save city to search history
     await HistoryService.addCity(city);
 
-    return res.json(weatherData); 
+    return res.json(weatherData);
   } catch (error: unknown) {  
-    console.error('Error fetching weather data:', error);
+    console.error('❌ Error fetching weather data:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(500).json({ error: errorMessage });
   }
@@ -32,8 +32,10 @@ router.post('/', async (req, res) => {
 router.get('/history', async (_req, res) => {
   try {
     const history = await HistoryService.getCities();
+    console.log('📜 Search History:', history);
     return res.json(history);
   } catch (error: unknown) {  
+    console.error('❌ Error retrieving search history:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(500).json({ error: errorMessage });
   }
@@ -43,9 +45,11 @@ router.get('/history', async (_req, res) => {
 router.delete('/history/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(`🗑️ Deleting city from history: ${id}`);
     await HistoryService.removeCity(id);
-    return res.json({ message: 'City deleted from history' }); 
+    return res.json({ message: '✅ City deleted from history' });
   } catch (error: unknown) {  
+    console.error('❌ Error deleting city:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(500).json({ error: errorMessage });
   }
