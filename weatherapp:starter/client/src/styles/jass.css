@@ -272,24 +272,37 @@ h3 small {
   font-weight: 600; /* Makes small text in headers more readable */
 }
 
-/**
-   * Prevent `sub` and `sup` elements from affecting the line height in
-   * all browsers.
-   */
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
+  font-size: 75%; /* Keeps subscript and superscript readable */
+  line-height: 0; /* Prevents affecting line height */
   position: relative;
   vertical-align: baseline;
 }
 
+/**
+ * 1. Adjusts `sub` positioning to prevent overlap with surrounding text.
+ */
 sub {
-  bottom: -0.25em;
+  bottom: -0.25em; /* Moves subscript slightly lower */
 }
 
+/**
+ * 1. Adjusts `sup` positioning to align properly with text.
+ */
 sup {
-  top: -0.5em;
+  top: -0.5em; /* Moves superscript slightly higher */
+}
+
+/**
+ * 1. Improves readability in headers where sub/sup might be used.
+ * 2. Ensures better spacing in larger fonts.
+ */
+h1 sub,
+h1 sup,
+h2 sub,
+h2 sup {
+  font-size: 65%; /* Slightly smaller for large headings */
 }
 
 /* Embedded content
