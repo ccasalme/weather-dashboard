@@ -496,7 +496,7 @@ h4 {
 }
 
 div.card-body.p-2, div.forecast-card.card.text-white.bg-primary.h-100 {
-  padding: 0.5rem;
+  padding: 0.7rem;
   background: rgb(99,96,96);
   background: linear-gradient(180deg, rgba(99,96,96,1) 0%, rgba(37,70,140,1) 94%);
 }
