@@ -41,6 +41,7 @@ class WeatherService {
   // Fetch weather data
   private async fetchWeatherData(coordinates: Coordinates): Promise<Weather> {
     try {
+      console.log('API KEY:', this.apiKey);
       const response = await axios.get(
         `${this.baseWeatherURL}?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=metric`
       );

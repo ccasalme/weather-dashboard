@@ -13,15 +13,21 @@ class City {
 }
 
 class HistoryService {
-  // Read from the JSON file
+// Read from the JSON file
   private async read(): Promise<City[]> {
     try {
       const data = await fs.readFile(filePath, 'utf-8');
       return JSON.parse(data) as City[];
-    } catch (error) {
-      return []; // Return an empty array if file doesn't exist or is empty
-    }
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        // If the file doesn't exist, create it with an empty array
+        await fs.writeFile(filePath, '[]', 'utf-8');
+        return [];
+      }
+    throw error;
   }
+}
+
 
   // Write to the JSON file
   private async write(cities: City[]): Promise<void> {

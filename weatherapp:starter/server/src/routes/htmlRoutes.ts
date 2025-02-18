@@ -8,7 +8,9 @@ const router = Router();
 
 // ✅ Serve the index.html file
 router.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  const filePath = path.join(__dirname, '../../../client/dist/index.html');
+  res.sendFile(filePath);
+  console.log("Serving index.html from:", filePath);
 });
 
 // ✅ Serve static assets from client/dist
