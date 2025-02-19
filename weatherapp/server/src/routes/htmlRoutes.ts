@@ -14,6 +14,6 @@ router.get('/', (_req, res) => {
 });
 
 // ✅ Serve static assets from client/dist
-router.use(express.static(path.join(__dirname, '../../client/dist')));
+router.use(express.static(path.join(__dirname, '../../../client/dist')));
 
 export default router;
