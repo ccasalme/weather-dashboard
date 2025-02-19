@@ -37,7 +37,7 @@ To run this application locally, ensure you have **Node.js** installed on your c
 ## Usage
 To start the Weather Dashboard, use the following command:
 ```sh
-npm run start:dev
+npm run build
 ```
 Once the application is running, enter a city name in the search bar to retrieve weather information.
 
